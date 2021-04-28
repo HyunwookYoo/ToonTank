@@ -10,6 +10,9 @@
 #include "BasePawn.generated.h"
 
 class AProjectileBase;
+class UParticleSystem;
+class UHealthComponent;
+class USoundBase;
 
 UCLASS()
 class TOONTANKS_API ABasePawn : public APawn
@@ -40,4 +43,13 @@ private:
 	// VARIABLES
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile Type", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<AProjectileBase> ProjectileClass;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile Type", meta = (AllowPrivateAccess = "true"))
+	UHealthComponent* HealthComponent = nullptr;
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	USoundBase* DeathSound = nullptr;
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	TSubclassOf<UMatineeCameraShake> CameraShakeExplode;
+
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	UParticleSystem* DeathParticle = nullptr;
 };
